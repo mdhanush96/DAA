@@ -1,16 +1,13 @@
+from collections import Counter
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        seen = []
-        n= len(nums)
-        dublicate = 0
-        Original = 0
-        sum2 = sum1 = 0
-        for i in nums:
-            sum2 = sum2+i
-            if i in seen:
-                dublicate = i
-            seen.append(i)
+        n = len(nums)
+        actual_sum = sum(nums)
+        actual_set_sum = sum(set(nums))
 
-        sum1 = (n*(n+1))//2
+        duplicate = actual_sum - actual_set_sum
+        expected_sum = n * (n + 1) // 2
+        missing = expected_sum - actual_set_sum
 
-        return [dublicate,sum1-(sum2-dublicate)]
+        return [duplicate, missing]
+        
