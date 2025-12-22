@@ -1,0 +1,15 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        # Mark seen numbers
+        for i in range(n):
+            idx = abs(nums[i]) - 1
+            nums[idx] = -abs(nums[idx])
+
+   
+        result = []
+        for i in range(n):
+            if nums[i] > 0:
+                result.append(i + 1)
+
+        return result
